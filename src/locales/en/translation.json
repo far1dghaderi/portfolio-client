@@ -1,0 +1,145 @@
+{
+  "nav": {
+    "home": "Home",
+    "blogs": "Blogs",
+    "cv": "CV",
+    "donations": "Donations",
+    "login": "Login",
+    "logout": "Logout",
+    "welcome": "Welcome"
+  },
+  "home": {
+    "hero": {
+      "greeting": "Hi, I'm",
+      "title": "Full Stack Developer",
+      "bio": "Passionate full-stack developer with 5+ years of experience building modern web applications. I love working with React, TypeScript, and Node.js. When I'm not coding, you can find me hiking, reading tech blogs, or contributing to open source projects.",
+      "cvButton": "View My CV"
+    },
+    "latestBlogs": {
+      "title": "Latest Blog Posts",
+      "subtitle": "Thoughts, tutorials, and insights about web development",
+      "readMore": "Read More",
+      "viewAll": "View All Blogs"
+    },
+    "contact": {
+      "title": "Get In Touch",
+      "subtitle": "Have a question or want to work together? Feel free to reach out!",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "your.email@example.com",
+      "messagePlaceholder": "Your message...",
+      "sendButton": "Send Message",
+      "successMessage": "Thank you for your message! I'll get back to you soon."
+    }
+  },
+  "blogs": {
+    "title": "Blog Posts",
+    "subtitle": "Thoughts, tutorials, and insights about web development and technology",
+    "searchPlaceholder": "Search posts...",
+    "allTags": "All Tags",
+    "noPostsFound": "No posts found",
+    "noPostsMessage": "Try adjusting your search terms or filter criteria.",
+    "showing": "Showing",
+    "of": "of",
+    "posts": "posts",
+    "by": "By",
+    "readMore": "Read More"
+  },
+  "blogPost": {
+    "backToBlogs": "← Back to Blogs",
+    "postNotFound": "Post Not Found",
+    "postNotFoundMessage": "The blog post you're looking for doesn't exist.",
+    "backToBlogsButton": "Back to Blogs",
+    "comments": "Comments",
+    "addComment": "Add a comment",
+    "commentPlaceholder": "Share your thoughts...",
+    "postComment": "Post Comment",
+    "loginToComment": "Please log in to leave a comment.",
+    "loginLink": "log in",
+    "noComments": "No comments yet. Be the first to comment!"
+  },
+  "cv": {
+    "contactInfo": "Contact Information",
+    "email": "Email:",
+    "location": "Location:",
+    "skills": "Skills",
+    "experience": "Professional Experience",
+    "education": "Education",
+    "additionalInfo": "Additional Information",
+    "languages": "Languages",
+    "interests": "Interests",
+    "downloadCV": "Download CV (PDF)",
+    "native": "Native",
+    "intermediate": "Intermediate"
+  },
+  "auth": {
+    "signIn": "Sign in to your account",
+    "createAccount": "Create your account",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "signUp": "Sign up",
+    "signInButton": "Sign in",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Enter your full name",
+    "email": "Email address",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "signingIn": "Signing in...",
+    "creatingAccount": "Creating account...",
+    "invalidCredentials": "Invalid email or password",
+    "registrationFailed": "Registration failed. Please try again.",
+    "errorOccurred": "An error occurred. Please try again.",
+    "demoCredentials": "Demo Credentials",
+    "demoMessage": "For demo purposes, you can use any email and password.",
+    "demoExample": "Example: demo@example.com / password123"
+  },
+  "donations": {
+    "title": "Support My Work",
+    "subtitle": "If you find my blog posts helpful and would like to support my work, consider making a donation. Your support helps me continue creating quality content and maintaining this website.",
+    "makeDonation": "Make a Donation",
+    "selectAmount": "Select Amount",
+    "customAmount": "Enter custom amount",
+    "paymentMethod": "Payment Method",
+    "creditCard": "Credit/Debit Card (Stripe)",
+    "paypal": "PayPal",
+    "crypto": "Cryptocurrency",
+    "donateNow": "Donate Now",
+    "whatSupportMeans": "What Your Support Means",
+    "supportPoints": {
+      "content": "Helps me create more high-quality blog posts and tutorials",
+      "maintenance": "Supports the maintenance and hosting of this website",
+      "tools": "Enables me to invest in better tools and resources",
+      "motivation": "Motivates me to continue sharing knowledge with the community"
+    },
+    "otherWays": "Other Ways to Support",
+    "shareContent": "Share My Content",
+    "shareDescription": "Share my blog posts on social media or with your network. This helps reach more people who might find the content valuable.",
+    "leaveComments": "Leave Comments",
+    "commentsDescription": "Engage with my posts by leaving thoughtful comments. Your feedback helps me understand what content is most valuable.",
+    "suggestTopics": "Suggest Topics",
+    "topicsDescription": "Let me know what topics you'd like me to cover in future posts. Your suggestions help me create more relevant content.",
+    "questions": "Questions?",
+    "questionsText": "If you have any questions about donations or would like to discuss other ways to support my work, feel free to reach out.",
+    "contactMe": "Contact me →"
+  },
+  "footer": {
+    "description": "Full Stack Developer passionate about creating modern web applications.",
+    "quickLinks": "Quick Links",
+    "connect": "Connect",
+    "copyright": "© 2024 John Doe. All rights reserved."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "submit": "Submit",
+    "close": "Close"
+  }
+}

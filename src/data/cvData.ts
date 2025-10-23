@@ -4,7 +4,7 @@ export const cvProfile: CVProfile = {
   name: "Farid Ghaderi",
   title: "Software Engineer",
   summary:
-    "Experienced software engineer with a passion for building scalable and efficient applications. Proven track record of delivering high-quality solutions in fast-paced environments. Seeking a challenging role where I can leverage my skills and expertise to contribute to the success of a dynamic team.",
+    "My name is Farid Ghaderi, a software engineer specializing in backend development. I have solid experience with Node.js, Express.js, NestJS, and TypeScript, and I work confidently with both SQL and MongoDB databases. I’m skilled at building efficient RESTful APIs and designing scalable, maintainable backend systems. In addition to backend work, I also develop frontend applications with React, allowing me to handle full-stack projects and seamlessly bridge backend and frontend development. I’m a problem solver, a team player, and a fast learner who’s always eager to improve and take on new challenges.",
   image:
     "https://dl.dropboxusercontent.com/scl/fi/l6n7fm7lylqqd7wn1c679/pfp.png?rlkey=w3ccaa0xjuoyob31ee54hysta",
   email: "faridghaderi2001@gmail.com",

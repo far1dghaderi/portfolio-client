@@ -19,7 +19,7 @@ export function CVPage() {
               <MdDownload className="mr-2 h-5 w-5" />
               <a
                 target="_blank"
-                href="https://uc32b642ba2c6088e4ae386de06b.dl.dropboxusercontent.com/cd/0/get/CzybSxoB3nszji9bQ1DEA88RdMx17I5YifL0ukx1R9asI_twUDrHxxthmhK2F6pTQRfr-ch6I8YyL4cT36KoM6TG6IXaR8zAAHct9S1q8c-RgNT5KVB-xr7FddM-VpNIXDgfVKK3hn7mf60c2mMV9TkmI47OpXQgGUP8zwIdxaQGlA/file"
+                href="https://dl.dropboxusercontent.com/scl/fi/uwe3rixu0deggmnhoufv6/farid-ghaderi-cv.pdf?rlkey=unzrymwo2voijv4coduplnfg2"
               >
                 Download CV
               </a>
@@ -28,7 +28,9 @@ export function CVPage() {
           <ProfileSection profile={cvProfile} />
           <div className="px-4 pt-5 pb-3">
             <h2 className="pb-3 text-[22px] leading-tight font-bold tracking-tight">Summary</h2>
-            <p className="pt-1 pb-3 text-base leading-normal font-normal">{cvProfile.summary}</p>
+            <p className="pt-1 pb-3 text-justify text-base leading-normal font-normal">
+              {cvProfile.summary}
+            </p>
           </div>
           <div className="px-4 pt-5 pb-3">
             <h2 className="pb-3 text-[22px] leading-tight font-bold tracking-tight">Experience</h2>

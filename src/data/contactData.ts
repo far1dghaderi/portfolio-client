@@ -1,4 +1,11 @@
-import { FaGithub, FaLinkedin, FaEnvelope, FaTelegram } from "react-icons/fa"
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaTelegram,
+  FaGoodreads,
+  FaInstagram,
+} from "react-icons/fa"
 import type { IconType } from "react-icons"
 
 export interface SocialLink {
@@ -37,5 +44,19 @@ export const socialLinks: SocialLink[] = [
     icon: FaTelegram,
     url: "https://t.me/faridg",
     color: "bg-blue-500 hover:bg-blue-600",
+  },
+  {
+    id: "7",
+    name: "Instagram",
+    icon: FaInstagram,
+    url: "https://instagram.com/far1dghaderi",
+    color: "bg-pink-700 hover:bg-pink-800",
+  },
+  {
+    id: "6",
+    name: "Goodreads",
+    icon: FaGoodreads,
+    url: "https://www.goodreads.com/far1dghaderi",
+    color: "bg-yellow-800 hover:bg-yellow-600",
   },
 ]

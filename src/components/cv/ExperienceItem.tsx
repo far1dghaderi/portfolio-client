@@ -10,19 +10,19 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
     <div className="bg-card flex flex-col gap-3 rounded-lg px-4 py-3 shadow-sm">
       <div className="flex justify-between gap-4">
         <div className="flex flex-1 flex-col">
-          <p className="text-base leading-normal font-medium">{experience.company}</p>
-          {experience.position && (
-            <p className="text-primary text-sm leading-normal font-medium italic">
-              {experience.position}
-            </p>
-          )}
-          <p className="text-muted-foreground mt-2 text-sm leading-normal font-normal">
-            {experience.description}
+          <div className="flex justify-between gap-4">
+            <p className="text-base leading-normal font-medium">{experience.company}</p>
+            <div className="shrink-0">
+              <p className="text-muted-foreground text-sm leading-normal font-normal">
+                {experience.period}
+              </p>
+            </div>
+          </div>
+          <p className="text-primary text-sm leading-normal font-medium italic">
+            {experience.position}
           </p>
-        </div>
-        <div className="shrink-0">
-          <p className="text-muted-foreground text-sm leading-normal font-normal">
-            {experience.period}
+          <p className="text-muted-foreground mt-2 text-justify text-sm leading-normal font-normal">
+            {experience.description}
           </p>
         </div>
       </div>

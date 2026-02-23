@@ -26,42 +26,48 @@ export function CVPage() {
             </Button>
           </div>
           <ProfileSection profile={cvProfile} />
-          <div className="px-4 pt-5 pb-3">
+          <div className="bg-card rounded-lg px-4 pt-5 pb-3 mb-4">
             <h2 className="pb-3 text-[22px] leading-tight font-bold tracking-tight">Summary</h2>
             <p className="pt-1 pb-3 text-justify text-base leading-normal font-normal">
               {cvProfile.summary}
             </p>
           </div>
-          <div className="px-4 pt-5 pb-3">
+          <div className="bg-card rounded-lg px-4 pt-5 pb-3 mb-2">
             <h2 className="pb-3 text-[22px] leading-tight font-bold tracking-tight">Experience</h2>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2 mb-4">
             {experiences.map((exp) => (
               <ExperienceItem key={exp.id} experience={exp} />
             ))}
           </div>
-          <div className="px-4 pt-5 pb-3">
+          <div className="bg-card rounded-lg px-4 pt-5 pb-3 mb-2">
             <h2 className="pb-3 text-[22px] leading-tight font-bold tracking-tight">Education</h2>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2 mb-4">
             {education.map((edu) => (
               <EducationItem key={edu.id} education={edu} />
             ))}
           </div>
-          <div className="px-4 pt-5 pb-3">
+          <div className="bg-card rounded-lg px-4 pt-5 pb-3 mb-2">
             <h2 className="pb-3 text-[22px] leading-tight font-bold tracking-tight">
               Technical Skills
             </h2>
           </div>
-          <SkillsSection skills={skills} />
-          <div className="px-4 pt-5 pb-3">
+          <div className="bg-card rounded-lg mb-4">
+            <SkillsSection skills={skills} />
+          </div>
+          <div className="bg-card rounded-lg px-4 pt-5 pb-3 mb-2">
             <h2 className="pb-3 text-[22px] leading-tight font-bold tracking-tight">Soft Skills</h2>
           </div>
-          <SkillsSection skills={softSkills} />
-          <div className="px-4 pt-5 pb-3">
+          <div className="bg-card rounded-lg mb-4">
+            <SkillsSection skills={softSkills} />
+          </div>
+          <div className="bg-card rounded-lg px-4 pt-5 pb-3 mb-2">
             <h2 className="pb-3 text-[22px] leading-tight font-bold tracking-tight">Languages</h2>
           </div>
-          <SkillsSection skills={languages} />
+          <div className="bg-card rounded-lg">
+            <SkillsSection skills={languages} />
+          </div>
         </div>
       </div>
     </div>

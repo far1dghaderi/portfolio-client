@@ -1,65 +1,39 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import {
-  Code2,
-  BookOpen,
-  Gamepad2,
-  Music,
-  Camera,
-  Plane,
-  Heart,
-  Volleyball,
-  BicepsFlexed,
-} from "lucide-react"
+import type { ComponentType } from "react"
+import { Code2, BookOpen, Gamepad2, Music, BicepsFlexed } from "lucide-react"
 import { hobbies } from "@/data/hobbiesData"
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const iconMap: Record<string, ComponentType<{ className?: string }>> = {
   Code2,
   BookOpen,
   Gamepad2,
   Music,
-  Camera,
-  Plane,
-  Volleyball,
   BicepsFlexed,
 }
 
 export function HobbiesSection() {
   return (
-    <section id="hobbies" className="bg-background py-16 sm:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2">
-            <Heart className="text-primary h-6 w-6 animate-pulse" />
-          </div>
-          <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Hobbies & Interests</h2>
-          <p className="text-muted-foreground mx-auto max-w-2xl font-mono text-lg">
-            When I'm not coding, you'll find me doing these things
-          </p>
-        </div>
+    <section id="about" className="scroll-mt-8 py-12 sm:py-16">
+      <h2 className="text-2xl font-bold tracking-tight">About</h2>
+      <p className="mt-4 max-w-2xl text-sm leading-relaxed text-neutral-500 sm:text-base dark:text-neutral-400">
+        I specialize in backend development with Node.js, Express, NestJS, and TypeScript, and I
+        work with both SQL and MongoDB. I build APIs and systems that stay maintainable, and I use
+        React when a project needs the frontend as well. Based in London.
+      </p>
 
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {hobbies.map((hobby) => {
-            const Icon = iconMap[hobby.icon]
-            return (
-              <Card
-                key={hobby.id}
-                className="group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-              >
-                <CardHeader>
-                  <div className="bg-primary/10 text-primary mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg transition-all duration-300 group-hover:scale-110">
-                    {Icon && <Icon className="h-6 w-6" />}
-                  </div>
-                  <CardTitle className="text-xl">{hobby.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {hobby.description}
-                  </p>
-                </CardContent>
-              </Card>
-            )
-          })}
-        </div>
+      <h3 className="mt-12 text-base font-semibold">On the side</h3>
+      <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {hobbies.map((hobby) => {
+          const Icon = iconMap[hobby.icon]
+          return (
+            <article key={hobby.id}>
+              {Icon && <Icon className="text-coral h-6 w-6" />}
+              <h4 className="mt-3 text-sm font-semibold">{hobby.name}</h4>
+              <p className="mt-1 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+                {hobby.description}
+              </p>
+            </article>
+          )
+        })}
       </div>
     </section>
   )

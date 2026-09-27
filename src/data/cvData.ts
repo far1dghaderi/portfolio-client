@@ -1,5 +1,8 @@
 import type { CVProfile, Experience, Education } from "@/types/cv"
 
+export const cvUrl =
+  "https://dl.dropboxusercontent.com/scl/fi/uwe3rixu0deggmnhoufv6/farid-ghaderi-cv.pdf?rlkey=unzrymwo2voijv4coduplnfg2"
+
 export const cvProfile: CVProfile = {
   name: "Farid Ghaderi",
   title: "Software Engineer",
@@ -20,8 +23,7 @@ export const experiences: Experience[] = [
       "Rapido delivers enterprise-grade engineering solutions for startups and Enterprises. We turn complex problems into elegant code.",
     period: "Sep 2024 - Present",
     tools: ["Everything"],
-    companyType:
-      "Software Engineering Team • Worldwide",
+    companyType: "Software Engineering Team • Worldwide",
     logo: "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3cpath%20fill='%23fbbf24'%20d='M55%205L25%2055h20L35%2095l40-50H55z'/%3e%3c/svg%3e",
   },
   {
@@ -40,7 +42,7 @@ export const experiences: Experience[] = [
       "PostgreSQL",
       "Docker",
       "ReactJs",
-      "APISIX"
+      "APISIX",
     ],
     companyType:
       "Passwordless Authentication Solutions Enterprise • Tehran, Iran • Full-time Remote",

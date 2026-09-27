@@ -1,19 +1,18 @@
-import { Navbar } from "@/components/Navbar"
+import { SiteShell } from "@/components/SiteShell"
 import { Hero } from "@/components/Hero"
+import { ServicesSection } from "@/components/ServicesSection"
 import { ExperienceSection } from "@/components/ExperienceSection"
 import { HobbiesSection } from "@/components/HobbiesSection"
 import { ContactCTA } from "@/components/ContactCTA"
-import { Footer } from "@/components/Footer"
 
 export function HomePage() {
   return (
-    <div className="bg-background min-h-screen">
-      <Navbar />
+    <SiteShell>
       <Hero />
+      <ServicesSection />
       <ExperienceSection />
       <HobbiesSection />
       <ContactCTA />
-      <Footer />
-    </div>
+    </SiteShell>
   )
 }

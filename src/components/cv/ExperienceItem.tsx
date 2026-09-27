@@ -1,5 +1,4 @@
 import type { Experience } from "@/types/cv"
-import { Badge } from "@/components/ui/badge"
 
 interface ExperienceItemProps {
   experience: Experience
@@ -7,34 +6,20 @@ interface ExperienceItemProps {
 
 export function ExperienceItem({ experience }: ExperienceItemProps) {
   return (
-    <div className="bg-card flex flex-col gap-3 rounded-lg px-4 py-3 shadow-sm">
-      <div className="flex justify-between gap-4">
-        <div className="flex flex-1 flex-col">
-          <div className="flex justify-between gap-4">
-            <p className="text-base leading-normal font-medium">{experience.company}</p>
-            <div className="shrink-0">
-              <p className="text-muted-foreground text-sm leading-normal font-normal">
-                {experience.period}
-              </p>
-            </div>
-          </div>
-          <p className="text-primary text-sm leading-normal font-medium italic">
-            {experience.position}
-          </p>
-          <p className="text-muted-foreground mt-2 text-justify text-sm leading-normal font-normal">
-            {experience.description}
-          </p>
-        </div>
+    <article className="border-b border-neutral-200 py-5 last:border-b-0 dark:border-neutral-800">
+      <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+        <p className="font-semibold">{experience.company}</p>
+        <p className="text-sm text-neutral-400">{experience.period}</p>
       </div>
+      <p className="text-ink mt-1 text-sm font-medium">{experience.position}</p>
+      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
+        {experience.description}
+      </p>
       {experience.tools && experience.tools.length > 0 && (
-        <div className="flex flex-wrap gap-2 border-t pt-2">
-          {experience.tools.map((tool) => (
-            <Badge key={tool} variant="secondary" className="bg-primary/10 text-primary text-xs">
-              {tool}
-            </Badge>
-          ))}
-        </div>
+        <p className="mt-3 text-xs text-neutral-500 dark:text-neutral-400">
+          {experience.tools.join("  ·  ")}
+        </p>
       )}
-    </div>
+    </article>
   )
 }

@@ -1,18 +1,18 @@
-import { Badge } from "@/components/ui/badge"
-
 interface SkillsSectionProps {
   skills: string[]
 }
 
 export function SkillsSection({ skills }: SkillsSectionProps) {
   return (
-    <div className="flex flex-wrap gap-3 p-3">
+    <div className="flex flex-wrap gap-2 py-4">
       {skills.map((skill) => (
-        <Badge key={skill} variant="secondary" className="h-8 px-4">
+        <span
+          key={skill}
+          className="rounded-full border border-neutral-200 px-3 py-1 text-sm text-neutral-700 dark:border-neutral-700 dark:text-neutral-200"
+        >
           {skill}
-        </Badge>
+        </span>
       ))}
     </div>
   )
 }
-

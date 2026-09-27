@@ -4,7 +4,13 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Plus Jakarta Sans", "ui-sans-serif", "system-ui", "sans-serif"],
+      },
       colors: {
+        canvas: "#ff6a69",
+        coral: "#ff6a69",
+        ink: "#296696",
         border: "hsl(var(--border) / <alpha-value>)",
         input: "hsl(var(--input) / <alpha-value>)",
         ring: "hsl(var(--ring) / <alpha-value>)",
@@ -47,4 +53,4 @@ export default {
     },
   },
   plugins: [],
-};
+}

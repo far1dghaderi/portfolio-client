@@ -1,49 +1,32 @@
-import { MdDownload } from "react-icons/md"
-import { FaGithub } from "react-icons/fa"
-import { Button } from "@/components/ui/button"
+import { Link } from "react-router-dom"
+import { Portrait } from "@/components/Portrait"
+
+const buttonClass =
+  "inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors"
 
 export function Hero() {
   return (
-    <section className="bg-background py-16 sm:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
-          <div className="space-y-6">
-            <p className="text-primary font-mono text-sm font-semibold tracking-wider uppercase">
-              &gt; HELLO WORLD
-            </p>
-            <h1 className="text-4xl leading-tight font-bold sm:text-5xl lg:text-6xl">
-              Software Engineer &amp; Problem Solver
-            </h1>
-            <p className="text-muted-foreground justify-justify font-mono text-lg">
-              I’m an engineering student and full-stack developer who specializes in building
-              reliable, scalable systems with clean, efficient code. While I focus on backend
-              architecture and system design, I’m comfortable handling frontend work when needed.
-              Passionate about solving complex problems, optimizing workflows, and using technology
-              to create meaningful, high-impact solutions.
-            </p>
-            <div className="flex flex-wrap items-center gap-4">
-              <Button size="lg" className="shadow-md">
-                <MdDownload className="mr-2 h-5 w-5" />
-                <a
-                  href="https://dl.dropboxusercontent.com/scl/fi/uwe3rixu0deggmnhoufv6/farid-ghaderi-cv.pdf?rlkey=unzrymwo2voijv4coduplnfg2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Download CV
-                </a>
-              </Button>
-              <Button variant="outline" size="lg" className="shadow-md" asChild>
-                <FaGithub />
-                <a href="http://github.com/far1dghaderi/" target="_blank" rel="noopener noreferrer">
-                  View on GitHub
-                </a>
-              </Button>
-            </div>
-          </div>
+    <section className="grid items-center gap-8 py-12 md:grid-cols-[auto_1fr] md:gap-14 md:py-16">
+      <Portrait className="mx-auto md:mx-0" />
 
-          <div className="bold relative text-center">
-            Placeholder, waiting for a picture as awesome as my skills.
-          </div>
+      <div>
+        <p className="text-base text-neutral-800 sm:text-lg dark:text-neutral-100">
+          Hi 👋, I'm Farid
+        </p>
+        <h1 className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">Software Engineer</h1>
+        <p className="mt-3 max-w-md text-sm text-neutral-500 italic sm:text-base dark:text-neutral-400">
+          “Reliable backend systems, clear APIs, and the frontend when a product needs both.”
+        </p>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a href="/#work" className={`${buttonClass} bg-ink text-white hover:bg-[#214f78]`}>
+            My Work
+          </a>
+          <Link
+            to="/contact"
+            className={`${buttonClass} bg-coral text-neutral-950 hover:bg-[#ff5856]`}
+          >
+            Let's Talk
+          </Link>
         </div>
       </div>
     </section>

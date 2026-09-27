@@ -1,100 +1,94 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
-import { MdCode, MdMenu, MdClose } from "react-icons/md"
-import { ThemeToggle } from "./theme-toggle"
+import { Link, useLocation } from "react-router-dom"
+import { Menu, X } from "lucide-react"
+import { Logo } from "@/components/Logo"
+import { ThemeToggle } from "@/components/theme-toggle"
+
+const navLinks = [
+  { index: "1", name: "Services", href: "/#services" },
+  { index: "2", name: "Work", href: "/#work" },
+  { index: "3", name: "About", href: "/#about" },
+  { index: "4", name: "Contact", href: "/contact" },
+]
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const navLinks = [
-    { name: "Home", href: "/", isHash: false },
-    { name: "Experience", href: "/#experience", isHash: true },
-    { name: "CV", href: "/cv", isHash: false },
-    { name: "Contact", href: "/contact", isHash: false },
-  ]
+  const { pathname } = useLocation()
 
   return (
-    <nav className="border-b">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <Link to="/" className="group flex items-center space-x-2 transition-all duration-300">
-            <MdCode className="text-primary text-4xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
-            <span className="group-hover:text-primary text-2xl font-bold transition-colors duration-300">
-              Farid Ghaderi
-            </span>
-          </Link>
+    <header className="print:hidden">
+      <div className="flex items-center justify-between gap-4">
+        <Link to="/" aria-label="Farid Ghaderi, home" className="shrink-0">
+          <Logo />
+        </Link>
 
-          <div className="hidden items-center space-x-8 md:flex">
-            {navLinks.map((link) =>
-              link.isHash ? (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-muted-foreground hover:text-primary group relative font-mono text-sm transition-all duration-300 hover:scale-110"
-                >
-                  {link.name}
-                  <span className="bg-primary absolute -bottom-1 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full"></span>
-                </a>
-              ) : (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className="text-muted-foreground hover:text-primary group relative font-mono text-sm transition-all duration-300 hover:scale-110"
-                >
-                  {link.name}
-                  <span className="bg-primary absolute -bottom-1 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-              )
-            )}
-            <ThemeToggle />
-          </div>
-
-          <div className="flex items-center gap-2 md:hidden">
-            <ThemeToggle />
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-foreground hover:text-primary hover:bg-accent rounded-md p-2 transition-all duration-300 hover:scale-110 active:scale-95"
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <MdClose size={24} /> : <MdMenu size={24} />}
-            </button>
-          </div>
+        <div className="hidden items-center gap-7 md:flex">
+          <nav className="flex items-center gap-6">
+            {navLinks.map((link) => (
+              <NavItem
+                key={link.name}
+                link={link}
+                active={pathname === "/contact" && link.href === "/contact"}
+              />
+            ))}
+          </nav>
+          <ThemeToggle />
         </div>
 
-        {isMenuOpen && (
-          <div className="border-t py-4 md:hidden">
-            <div className="flex flex-col space-y-4">
-              {navLinks.map((link) =>
-                link.isHash ? (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary group relative inline-block w-fit font-mono text-sm transition-all duration-300 hover:translate-x-2"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span className="relative">
-                      {link.name}
-                      <span className="bg-primary absolute -bottom-0.5 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full"></span>
-                    </span>
-                  </a>
-                ) : (
-                  <Link
-                    key={link.name}
-                    to={link.href}
-                    className="text-muted-foreground hover:text-primary group relative inline-block w-fit font-mono text-sm transition-all duration-300 hover:translate-x-2"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span className="relative">
-                      {link.name}
-                      <span className="bg-primary absolute -bottom-0.5 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full"></span>
-                    </span>
-                  </Link>
-                )
-              )}
-            </div>
-          </div>
-        )}
+        <div className="flex items-center gap-1 md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            className="grid h-9 w-9 place-items-center rounded-md text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
-    </nav>
+
+      {isMenuOpen && (
+        <nav className="mt-4 flex flex-col gap-3 border-t border-neutral-200 pt-4 md:hidden dark:border-neutral-800">
+          {navLinks.map((link) => (
+            <NavItem
+              key={link.name}
+              link={link}
+              active={pathname === "/contact" && link.href === "/contact"}
+              onClick={() => setIsMenuOpen(false)}
+            />
+          ))}
+        </nav>
+      )}
+    </header>
+  )
+}
+
+function NavItem({
+  link,
+  active,
+  onClick,
+}: {
+  link: (typeof navLinks)[number]
+  active?: boolean
+  onClick?: () => void
+}) {
+  const className = active
+    ? "text-[13px] font-medium text-neutral-900 dark:text-white"
+    : "text-[13px] font-medium text-neutral-400 transition-colors hover:text-neutral-900 dark:text-coral dark:hover:text-white"
+
+  if (link.href.startsWith("/#")) {
+    return (
+      <a href={link.href} className={className} onClick={onClick}>
+        {link.index}. {link.name}
+      </a>
+    )
+  }
+
+  return (
+    <Link to={link.href} className={className} onClick={onClick}>
+      {link.index}. {link.name}
+    </Link>
   )
 }

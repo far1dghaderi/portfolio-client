@@ -22,26 +22,38 @@ A modern, blazing-fast portfolio built with the latest and greatest web technolo
 - Smooth animations with Tailwind CSS
 - Modern tooling and best practices
 
+## Repository Structure
+
+This is a pnpm monorepo:
+
+```
+.
+├── apps/
+│   └── web/        # The Vite + React portfolio app (@portfolio/web)
+└── packages/       # Shared code (config, UI, types, ...)
+```
+
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ and npm
+- Node.js 20+
+- [pnpm](https://pnpm.io) 9+
 
 ### Installation
 
 ```bash
-# Install dependencies
-npm install
+# Install all workspace dependencies from the root
+pnpm install
 
 # Start development server
-npm run dev
+pnpm dev
 
 # Build for production
-npm run build
+pnpm build
 
 # Preview production build
-npm run preview
+pnpm preview
 ```
 
 ## Customization
@@ -56,10 +68,14 @@ Add new shadcn/ui components using the official documentation at [ui.shadcn.com]
 
 ## Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
+Run these from the repository root (they delegate to `@portfolio/web`):
+
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm preview` - Preview production build
+- `pnpm lint` - Run ESLint
+
+You can also scope commands to a workspace, e.g. `pnpm --filter @portfolio/web dev`.
 
 ## Contributing
 

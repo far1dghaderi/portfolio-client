@@ -1,7 +1,10 @@
 import { useEffect } from "react"
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom"
+import { SiteLayout } from "@/components/layout/SiteLayout"
 import { HomePage } from "@/pages/HomePage"
-import { CVPage } from "@/pages/CVPage"
+import { WorkPage } from "@/pages/WorkPage"
+import { WritingPage } from "@/pages/WritingPage"
+import { ExperiencePage } from "@/pages/ExperiencePage"
 import { ContactPage } from "@/pages/ContactPage"
 
 function ScrollToHash() {
@@ -27,11 +30,17 @@ function App() {
   return (
     <Router>
       <ScrollToHash />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/cv" element={<CVPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
+      <SiteLayout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/work" element={<WorkPage />} />
+          <Route path="/writing" element={<WritingPage />} />
+          <Route path="/experience" element={<ExperiencePage />} />
+          <Route path="/cv" element={<Navigate to="/experience" replace />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </SiteLayout>
     </Router>
   )
 }

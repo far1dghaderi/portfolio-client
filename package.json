@@ -4,10 +4,20 @@
   "private": true,
   "scripts": {
     "dev": "pnpm --filter @portfolio/web dev",
-    "build": "pnpm --filter @portfolio/web build",
-    "lint": "pnpm --filter @portfolio/web lint",
+    "dev:web": "pnpm --filter @portfolio/web dev",
+    "dev:api": "pnpm --filter @portfolio/api dev",
+    "build": "pnpm --filter @portfolio/api build && pnpm --filter @portfolio/web build",
+    "build:web": "pnpm --filter @portfolio/web build",
+    "build:api": "pnpm --filter @portfolio/api build",
+    "lint": "pnpm --filter @portfolio/web lint && pnpm --filter @portfolio/api lint",
     "preview": "pnpm --filter @portfolio/web preview",
-    "format": "pnpm --filter @portfolio/web format"
+    "format": "pnpm --filter @portfolio/web format",
+    "db:up": "docker compose up -d db",
+    "db:down": "docker compose down",
+    "db:migrate": "pnpm --filter @portfolio/api prisma:migrate",
+    "db:deploy": "pnpm --filter @portfolio/api prisma:deploy",
+    "db:seed": "pnpm --filter @portfolio/api db:seed",
+    "db:studio": "pnpm --filter @portfolio/api prisma:studio"
   },
   "packageManager": "pnpm@9.15.9",
   "engines": {

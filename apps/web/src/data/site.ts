@@ -8,7 +8,7 @@ export const site = {
   resumeUrl: cvUrl,
   avatar: cvProfile.image,
   availability: "Available for Q2 projects",
-  timezone: "Based in UTC+3:30, available for remote worldwide.",
+  timezone: "Based in London (GMT/BST), available for remote worldwide.",
   responseTime: "Typical response time: < 24 hours.",
 }
 

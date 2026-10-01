@@ -59,6 +59,13 @@ export function Header() {
           >
             Let's Talk
           </Link>
+          <Link
+            to="/experience"
+            aria-label="Experience profile"
+            className="hidden sm:flex h-8 w-8 rounded-full bg-primary items-center justify-center transition-transform hover:scale-105"
+          >
+            <Icon name="person" className="text-on-primary text-[18px]" />
+          </Link>
           <button
             type="button"
             onClick={() => setIsMenuOpen((open) => !open)}

@@ -29,9 +29,19 @@ This is a pnpm monorepo:
 ```
 .
 ├── apps/
-│   └── web/        # The Vite + React portfolio app (@portfolio/web)
+│   ├── web/        # The Vite + React portfolio app (@portfolio/web)
+│   └── api/        # NestJS + Prisma CMS API (@portfolio/api)
 └── packages/       # Shared code (config, UI, types, ...)
 ```
+
+## Admin CMS
+
+The site includes a small content management system for writing essays.
+
+- **Public API**: `GET /api/posts`, `GET /api/posts/:slug` (published posts only)
+- **Auth**: `POST /api/auth/login`, `POST /api/auth/logout`, `GET /api/auth/me` (JWT in an httpOnly cookie)
+- **Admin API** (guarded): `GET/POST /api/admin/posts`, `GET/PATCH/DELETE /api/admin/posts/:id`, `PATCH /api/admin/posts/reorder`
+- **Admin UI**: `/login` then `/admin` (create, edit, publish, delete, reorder posts with a Markdown editor and live preview)
 
 ## Getting Started
 
@@ -46,14 +56,51 @@ This is a pnpm monorepo:
 # Install all workspace dependencies from the root
 pnpm install
 
-# Start development server
+# Start the web dev server
 pnpm dev
 
-# Build for production
+# Start the API (separate terminal)
+pnpm dev:api
+```
+
+### Database & API setup
+
+The API uses PostgreSQL + Prisma.
+
+```bash
+# Option A: use the bundled Postgres via Docker (exposed on port 5433)
+pnpm db:up
+
+# Option B: use a local Postgres. Create the role + database once:
+#   CREATE ROLE portfolio LOGIN PASSWORD 'portfolio' CREATEDB;
+#   CREATE DATABASE portfolio OWNER portfolio;
+
+# Configure environment (defaults are provided in .env.example)
+cp apps/api/.env.example apps/api/.env
+
+# Generate the Prisma client, run migrations and seed sample content
+pnpm --filter @portfolio/api prisma:generate
+pnpm db:migrate
+pnpm db:seed
+```
+
+The seed creates an admin account from `ADMIN_EMAIL` / `ADMIN_PASSWORD` in `apps/api/.env`
+(defaults: `admin@portfolio.local` / `admin12345`). Change these before deploying.
+
+The web app talks to the API through a Vite dev proxy (`/api` → `http://127.0.0.1:3002`),
+so no CORS setup is needed in development. Point `VITE_API_URL` at your API in production.
+
+### Other commands
+
+```bash
+# Build for production (web + api)
 pnpm build
 
 # Preview production build
 pnpm preview
+
+# Lint both workspaces
+pnpm lint
 ```
 
 ## Customization

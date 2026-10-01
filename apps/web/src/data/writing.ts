@@ -16,7 +16,8 @@ export interface WritingMetric {
 
 export interface WritingPost {
   id: string
-  category: WritingCategory
+  slug: string
+  category: string
   categoryLabel: string
   tone: Tone
   title: string
@@ -24,6 +25,7 @@ export interface WritingPost {
   date: string
   readTime: string
   ref: string
+  imageUrl?: string
   tags: string[]
   featured?: boolean
   visual: "code" | "metrics" | "callout"
@@ -42,6 +44,7 @@ export const writingFilters: { id: "all" | WritingCategory; label: string }[] = 
 export const writingPosts: WritingPost[] = [
   {
     id: "resilient-nestjs",
+    slug: "resilient-nestjs",
     category: "engineering",
     categoryLabel: "Engineering",
     tone: "secondary",
@@ -51,6 +54,7 @@ export const writingPosts: WritingPost[] = [
     date: "March 15, 2025",
     readTime: "7 min read",
     ref: "ART-2025-NESTJS",
+    imageUrl: "https://picsum.photos/seed/resilient-nestjs/1200/630",
     tags: ["NestJS", "Architecture", "TypeScript", "DTOs"],
     featured: true,
     visual: "code",
@@ -65,6 +69,7 @@ export const writingPosts: WritingPost[] = [
   },
   {
     id: "time-recurrence",
+    slug: "time-recurrence",
     category: "product-building",
     categoryLabel: "Product & Building",
     tone: "tertiary",
@@ -74,6 +79,7 @@ export const writingPosts: WritingPost[] = [
     date: "February 24, 2025",
     readTime: "5 min read",
     ref: "ART-2025-RECURRENCE",
+    imageUrl: "https://picsum.photos/seed/time-recurrence/1200/630",
     tags: ["PostgreSQL", "Data Modeling", "NestJS", "UX"],
     visual: "metrics",
     metrics: [
@@ -84,6 +90,7 @@ export const writingPosts: WritingPost[] = [
   },
   {
     id: "build-my-own-systems",
+    slug: "build-my-own-systems",
     category: "notes-craft",
     categoryLabel: "Notes & Craft",
     tone: "primary",
@@ -93,6 +100,7 @@ export const writingPosts: WritingPost[] = [
     date: "January 18, 2025",
     readTime: "4 min read",
     ref: "ART-2025-HARDWARE",
+    imageUrl: "https://picsum.photos/seed/build-my-own-systems/1200/630",
     tags: ["Hardware", "Engineering Values", "Craft"],
     visual: "callout",
     callout: {

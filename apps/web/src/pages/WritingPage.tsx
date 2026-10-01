@@ -1,9 +1,13 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { Icon } from "@/components/common/Icon"
-import { writingFilters, writingPosts } from "@/data/writing"
-import type { WritingCategory, WritingPost } from "@/data/writing"
+import { writingPosts } from "@/data/writing"
+import type { WritingPost } from "@/data/writing"
 import type { Tone } from "@/data/site"
+import { api } from "@/lib/api"
+import { toWritingPost } from "@/lib/posts"
+import { categoryLabel } from "@/types/blog"
+import type { Post } from "@/types/blog"
 
 const toneText: Record<Tone, string> = {
   primary: "text-primary",
@@ -73,7 +77,20 @@ function PostVisual({ post }: { post: WritingPost }) {
 
 function PostItem({ post }: { post: WritingPost }) {
   return (
-    <article className="post-item group relative rounded-xl bg-surface-container-low p-space-lg lg:p-space-xl transition-all duration-300 hover:bg-surface-container hover:shadow-xl">
+    <Link
+      to={`/writing/${post.slug}`}
+      className="post-item group relative block rounded-xl bg-surface-container-low p-space-lg lg:p-space-xl transition-all duration-300 hover:bg-surface-container hover:shadow-xl"
+    >
+      {post.imageUrl ? (
+        <div className="mb-space-lg overflow-hidden rounded-lg border border-outline-variant bg-surface-container-lowest">
+          <img
+            src={post.imageUrl}
+            alt={post.title}
+            loading="lazy"
+            className="aspect-[2/1] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+          />
+        </div>
+      ) : null}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
         <div className="lg:col-span-3 flex lg:flex-col justify-between items-start gap-space-xs">
           <div className="flex flex-col gap-space-xs">
@@ -118,27 +135,51 @@ function PostItem({ post }: { post: WritingPost }) {
                 </span>
               ))}
             </div>
-            <Link
-              to="/writing"
-              className="inline-flex items-center gap-space-xs font-mono-code text-mono-code text-primary group-hover:translate-x-1 transition-transform"
-            >
+            <span className="inline-flex items-center gap-space-xs font-mono-code text-mono-code text-primary group-hover:translate-x-1 transition-transform">
               <span>Read essay</span>
               <Icon name="arrow_forward" className="text-[16px]" />
-            </Link>
+            </span>
           </div>
         </div>
       </div>
-    </article>
+    </Link>
   )
 }
 
 export function WritingPage() {
-  const [filter, setFilter] = useState<"all" | WritingCategory>("all")
+  const [filter, setFilter] = useState<string>("all")
   const [subscribed, setSubscribed] = useState(false)
-  const visible = filter === "all" ? writingPosts : writingPosts.filter((post) => post.category === filter)
+  const [posts, setPosts] = useState<WritingPost[]>(writingPosts)
 
-  const countFor = (id: "all" | WritingCategory) =>
-    id === "all" ? writingPosts.length : writingPosts.filter((post) => post.category === id).length
+  useEffect(() => {
+    let active = true
+    api
+      .get<Post[]>("/posts")
+      .then((data) => {
+        if (active && data.length > 0) {
+          setPosts(data.map(toWritingPost))
+        }
+      })
+      .catch(() => {
+        // Fall back to the bundled sample posts when the API is unavailable.
+      })
+    return () => {
+      active = false
+    }
+  }, [])
+
+  const visible = filter === "all" ? posts : posts.filter((post) => post.category === filter)
+
+  const filters = [
+    { id: "all", label: "All Posts" },
+    ...Array.from(new Set(posts.map((post) => post.category))).map((category) => ({
+      id: category,
+      label: categoryLabel(category),
+    })),
+  ]
+
+  const countFor = (id: string) =>
+    id === "all" ? posts.length : posts.filter((post) => post.category === id).length
 
   return (
     <>
@@ -157,7 +198,7 @@ export function WritingPage() {
               <div className="font-mono-label text-mono-label text-on-surface-variant flex items-center gap-space-xs">
                 <span>INDEX_VER: 2025.03</span>
                 <span className="text-outline">/</span>
-                <span className="text-secondary">{writingPosts.length} ARTICLES AVAILABLE</span>
+                <span className="text-secondary">{posts.length} ARTICLES AVAILABLE</span>
               </div>
             </div>
 
@@ -186,7 +227,7 @@ export function WritingPage() {
             </div>
 
             <div className="pt-space-md flex flex-wrap items-center gap-space-sm">
-              {writingFilters.map((item) => {
+              {filters.map((item) => {
                 const active = filter === item.id
                 return (
                   <button

@@ -49,7 +49,7 @@ export const focusAreas: FocusArea[] = [
   {
     icon: "verified_user",
     title: "Authentication & security",
-    body: "Years inside passwordless-authentication companies: FIDO2/WebAuthn flows, OAuth, role-based access control and API gateways like APISIX.",
+    body: "Years inside passwordless-authentication companies: FIDO2/WebAuthn, MFA, OIDC and SAML single sign-on, LDAP directory sync, role-based access control and API gateways like APISIX.",
   },
   {
     icon: "rocket_launch",
@@ -69,14 +69,23 @@ export const stackGroups: StackGroup[] = [
   {
     title: "Backend",
     icon: "dns",
-    items: ["Node.js", "NestJS", "Express", "Hono", "Prisma", "REST & OpenAPI", "Socket.io"],
+    items: [
+      "Node.js",
+      "NestJS",
+      "Express",
+      "Hono",
+      "Prisma",
+      "BullMQ",
+      "REST & OpenAPI",
+      "Socket.io",
+    ],
   },
   { title: "Frontend", icon: "layers", items: ["React", "Next.js", "Tailwind CSS", "Vite"] },
   { title: "Data", icon: "database", items: ["PostgreSQL", "MongoDB", "Redis"] },
   {
     title: "Auth & security",
     icon: "verified_user",
-    items: ["FIDO2 / WebAuthn", "OAuth 2.0", "JWT", "RBAC"],
+    items: ["FIDO2 / WebAuthn", "OIDC", "SAML", "OAuth 2.0", "LDAP", "MFA / OTP", "RBAC"],
   },
   {
     title: "Infra & ops",

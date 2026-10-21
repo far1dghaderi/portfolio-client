@@ -1,21 +1,17 @@
 import type { Experience } from "@/types/cv"
 
-export function CompanyLogo({ experience, size = "md" }: { experience: Experience; size?: "md" | "lg" }) {
-  const box = size === "lg" ? "h-14 w-14" : "h-12 w-12"
-  const initial = size === "lg" ? "text-xl" : "text-lg"
-
+// White tile: most company logos are drawn for light backgrounds.
+export function CompanyLogo({ experience }: { experience: Experience }) {
   return (
-    <div
-      className={`relative ${box} shrink-0 overflow-hidden rounded-lg border border-outline-variant bg-surface-container-high`}
-    >
-      <div className={`absolute inset-0 grid place-items-center font-bold text-primary ${initial}`}>
+    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-white sm:h-14 sm:w-14">
+      <div className="text-surface absolute inset-0 grid place-items-center text-lg font-bold">
         {experience.company.charAt(0)}
       </div>
       {experience.logo ? (
         <img
           src={experience.logo}
           alt={`${experience.company} logo`}
-          className="relative h-full w-full object-contain p-1.5"
+          className="relative h-full w-full bg-white object-contain p-2"
           onError={(event) => {
             event.currentTarget.style.display = "none"
           }}

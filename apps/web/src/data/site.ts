@@ -2,128 +2,85 @@ import { cvProfile, cvUrl } from "@/data/cvData"
 
 export const site = {
   name: "Farid Ghaderi",
-  role: "Full-stack product builder",
-  tagline: "Backend-strong systems engineering and craft software design.",
+  role: "Full-Stack Engineer",
+  tagline:
+    "Backend-leaning full-stack engineer. I build reliable APIs and the products on top of them.",
   email: "faridghaderi2001@gmail.com",
   resumeUrl: cvUrl,
   avatar: cvProfile.image,
-  availability: "Available for Q2 projects",
-  timezone: "Based in London (GMT/BST), available for remote worldwide.",
-  responseTime: "Typical response time: < 24 hours.",
+  location: "London, UK",
+  availability: "Open to freelance projects & remote roles",
+  timezone: "London (GMT/BST) · working with teams worldwide",
+  responseTime: "Usually replies within a day",
 }
 
-export interface Signal {
-  index: string
-  label: string
-  value: string
-  detail: string
-}
-
-export const signals: Signal[] = [
-  { index: "01", label: "Experience", value: "4+ Years APIs", detail: "High-throughput HTTP/gRPC" },
-  {
-    index: "02",
-    label: "Runtime",
-    value: "NestJS & TS Core",
-    detail: "Strict dependency injection",
-  },
-  { index: "03", label: "Security", value: "OIDC & SAML", detail: "SSO, JWT, RBAC guards" },
-  { index: "04", label: "Infra", value: "Linux & Docker", detail: "CI/CD & self-hosted runs" },
-  { index: "05", label: "Routing", value: "APISIX Gateway", detail: "Zero-downtime proxying" },
-  { index: "06", label: "Collab", value: "Async English", detail: "High ownership documentation" },
+export const navItems = [
+  { id: "about", name: "About" },
+  { id: "projects", name: "Projects" },
+  { id: "experience", name: "Experience" },
+  { id: "stack", name: "Stack" },
+  { id: "contact", name: "Contact" },
 ]
 
-export interface Principle {
-  index: string
+export const heroFacts = [
+  { value: "4+", label: "years shipping production software" },
+  { value: "3", label: "live products launched with Rapido Team" },
+  { value: "FIDO2", label: "passwordless auth, my home turf" },
+]
+
+export const aboutParagraphs = [
+  "I'm a software engineer who leans backend but enjoys owning the whole product. I started in 2022 by laying the foundations of a NestJS backend for a healthcare startup, then spent three years at IDmelon Technologies building the systems behind an enterprise passwordless-authentication platform: billing, role management, queueing and scheduling, and dozens of APIs used by the web, mobile and desktop teams.",
+  "Today I'm a full-stack engineer at Neshane, another passwordless-authentication company, and I run Rapido Team, a small engineering studio I founded in 2024 that designs, builds and ships web products for clients.",
+  "I care about software that keeps working after launch: readable code, honest estimates and clear async communication. Outside of work I read a lot, and I speak English, Persian, Kurdish and Spanish.",
+]
+
+export interface FocusArea {
+  icon: string
   title: string
   body: string
-  icon: string
-  tone: "primary" | "secondary" | "tertiary"
 }
 
-export const principles: Principle[] = [
+export const focusAreas: FocusArea[] = [
   {
-    index: "01",
-    title: "Product Mindset",
-    body: "I don't build features in isolation. I design around UX and business outcomes before writing the first schema migration, ensuring software makes intuitive sense to the real user.",
-    icon: "design_services",
-    tone: "primary",
+    icon: "dns",
+    title: "Backends & APIs",
+    body: "NestJS and Node.js services with clear module boundaries, validated inputs and documented REST APIs on PostgreSQL or MongoDB. Billing, permissions, queues and schedulers: the parts that have to be right.",
   },
   {
-    index: "02",
-    title: "Production-Grade by Default",
-    body: "Auth, input validation, rate limiting, and Docker containers are baked in from day one—not patched together during an emergency after deployment.",
     icon: "verified_user",
-    tone: "secondary",
+    title: "Authentication & security",
+    body: "Years inside passwordless-authentication companies: FIDO2/WebAuthn flows, OAuth, role-based access control and API gateways like APISIX.",
   },
   {
-    index: "03",
-    title: "Direct, Async Communication",
-    body: "High-signal updates in clear English. No fluff, no missed blockers, and no endless meetings. You always know what was shipped and what's next.",
-    icon: "chat",
-    tone: "tertiary",
+    icon: "rocket_launch",
+    title: "Products, end to end",
+    body: "With Rapido Team I take products from scope to launch: data model, API, a polished React or Next.js front end, then Docker and Caddy in production.",
   },
 ]
 
-export type Tone = "primary" | "secondary" | "tertiary" | "outline"
-
-export interface ArsenalItem {
-  name: string
-  tag: string
-  tone: Tone
-  highlighted?: boolean
-}
-
-export interface ArsenalGroup {
-  index: string
+export interface StackGroup {
   title: string
   icon: string
-  items: ArsenalItem[]
+  items: string[]
 }
 
-export const arsenal: ArsenalGroup[] = [
+export const stackGroups: StackGroup[] = [
+  { title: "Languages", icon: "code", items: ["TypeScript", "JavaScript", "SQL", "Bash"] },
   {
-    index: "01",
-    title: "Languages",
-    icon: "code",
-    items: [
-      { name: "TypeScript", tag: "Primary", tone: "primary", highlighted: true },
-      { name: "JavaScript", tag: "ES2024", tone: "outline" },
-      { name: "SQL", tag: "PostgreSQL", tone: "outline" },
-      { name: "Bash / Shell", tag: "Scripting", tone: "outline" },
-    ],
-  },
-  {
-    index: "02",
-    title: "Frameworks",
-    icon: "layers",
-    items: [
-      { name: "NestJS / Node.js", tag: "Core", tone: "secondary", highlighted: true },
-      { name: "React / Next.js", tag: "Client", tone: "outline" },
-      { name: "Prisma / TypeORM", tag: "ORM", tone: "outline" },
-      { name: "Express / Fastify", tag: "Micro", tone: "outline" },
-    ],
-  },
-  {
-    index: "03",
-    title: "Infra & Ops",
+    title: "Backend",
     icon: "dns",
-    items: [
-      { name: "Docker & Linux", tag: "Ubuntu/Deb", tone: "primary", highlighted: true },
-      { name: "APISIX / Nginx", tag: "Gateway", tone: "outline" },
-      { name: "GitLab / GitHub CI", tag: "Pipelines", tone: "outline" },
-      { name: "Redis / BullMQ", tag: "Cache", tone: "outline" },
-    ],
+    items: ["Node.js", "NestJS", "Express", "Hono", "Prisma", "REST & OpenAPI", "Socket.io"],
+  },
+  { title: "Frontend", icon: "layers", items: ["React", "Next.js", "Tailwind CSS", "Vite"] },
+  { title: "Data", icon: "database", items: ["PostgreSQL", "MongoDB", "Redis"] },
+  {
+    title: "Auth & security",
+    icon: "verified_user",
+    items: ["FIDO2 / WebAuthn", "OAuth 2.0", "JWT", "RBAC"],
   },
   {
-    index: "04",
-    title: "Protocols",
-    icon: "sync_alt",
-    items: [
-      { name: "REST & OpenAPI", tag: "Contract", tone: "tertiary", highlighted: true },
-      { name: "OIDC / SAML / OAuth", tag: "Auth", tone: "outline" },
-      { name: "GraphQL APIs", tag: "Federation", tone: "outline" },
-      { name: "WebSockets / SSE", tag: "Realtime", tone: "outline" },
-    ],
+    title: "Infra & ops",
+    icon: "boxes",
+    items: ["Docker", "Linux", "Caddy", "APISIX", "AWS", "GCP"],
   },
 ]

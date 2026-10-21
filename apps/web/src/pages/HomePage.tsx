@@ -1,23 +1,21 @@
 import { Hero } from "@/components/home/Hero"
-import { SignalsStrip } from "@/components/home/SignalsStrip"
-import { FeaturedWork } from "@/components/home/FeaturedWork"
-import { ExperienceSlider } from "@/components/home/ExperienceSlider"
-import { Principles } from "@/components/home/Principles"
-import { LatestWriting } from "@/components/home/LatestWriting"
-import { AboutTeaser } from "@/components/home/AboutTeaser"
-import { ContactCTA } from "@/components/home/ContactCTA"
+import { About } from "@/components/home/About"
+import { Projects } from "@/components/home/Projects"
+import { Experience } from "@/components/home/Experience"
+import { Stack } from "@/components/home/Stack"
+import { Writing } from "@/components/home/Writing"
+import { Contact } from "@/components/home/Contact"
 
 export function HomePage() {
   return (
     <>
       <Hero />
-      <SignalsStrip />
-      <FeaturedWork />
-      <ExperienceSlider />
-      <Principles />
-      <LatestWriting />
-      <AboutTeaser />
-      <ContactCTA />
+      <About />
+      <Projects />
+      <Experience />
+      <Stack />
+      <Writing />
+      <Contact />
     </>
   )
 }

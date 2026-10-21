@@ -1,26 +1,19 @@
-# Modern React Portfolio
+# Farid Ghaderi · Portfolio
 
-A modern, blazing-fast portfolio built with the latest and greatest web technologies.
+Source for [far1d.rapidoteam.com](https://far1d.rapidoteam.com): a single-page portfolio (about, projects,
+experience, stack, contact) plus an optional CMS-backed writing section.
 
 ## Tech Stack
 
-- **React 18** - A JavaScript library for building user interfaces
-- **TypeScript** - JavaScript with syntax for types
-- **Vite** - Next generation frontend tooling
-- **Tailwind CSS** - A utility-first CSS framework
-- **shadcn/ui** - Beautifully designed components built with Radix UI
-- **React Router** - Declarative routing for React
-- **Lucide Icons** - Beautiful & consistent icon toolkit
+- **React 19 + TypeScript**, built with **Vite**
+- **Tailwind CSS 4** for styling; scroll and hover animations are plain CSS + `IntersectionObserver`
+- **React Router** for `/`, `/writing` and the admin CMS (lazy-loaded)
+- **NestJS + Prisma + PostgreSQL** API for writing posts (`apps/api`)
 
-## Features
-
-- Lightning-fast HMR with Vite
-- Beautiful, accessible UI components with shadcn/ui
-- Type-safe development with TypeScript
-- Fully responsive design
-- Dark mode support built-in
-- Smooth animations with Tailwind CSS
-- Modern tooling and best practices
+Content lives in `apps/web/src/data/` (`site.ts`, `projects.ts`, `cvData.ts`, `contact.ts`); project screenshots
+are in `apps/web/public/projects/`. The web app deploys to Vercel on push to `main`; `vercel.json` rewrites
+every path to `index.html` so client-side routes work on refresh. The writing section only appears once the API
+returns published posts.
 
 ## Repository Structure
 
@@ -103,16 +96,6 @@ pnpm preview
 pnpm lint
 ```
 
-## Customization
-
-### Colors & Theme
-
-Edit `src/index.css` to customize the color palette and theme variables.
-
-### Components
-
-Add new shadcn/ui components using the official documentation at [ui.shadcn.com](https://ui.shadcn.com)
-
 ## Available Scripts
 
 Run these from the repository root (they delegate to `@portfolio/web`):
@@ -123,11 +106,3 @@ Run these from the repository root (they delegate to `@portfolio/web`):
 - `pnpm lint` - Run ESLint
 
 You can also scope commands to a workspace, e.g. `pnpm --filter @portfolio/web dev`.
-
-## Contributing
-
-Contributions, issues, and feature requests are welcome!
-
-## License
-
-This project is open source and available under the MIT License.

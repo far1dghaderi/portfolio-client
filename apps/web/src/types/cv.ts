@@ -4,9 +4,11 @@ export interface Experience {
   position: string
   description: string
   period: string
+  highlights?: string[]
   tools: string[]
   companyType: string
   logo?: string
+  url?: string
 }
 
 export interface Education {
